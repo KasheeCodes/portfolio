@@ -3,278 +3,570 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kashif's Portfolio</title>
+    <title>Muhammad Kashif — Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="kashi.css">
 </head>
 
 <body>
+
+    <div id="preloader">
+        <div class="loader-frame">
+            <span class="corner tl"></span>
+            <span class="corner tr"></span>
+            <span class="corner bl"></span>
+            <span class="corner br"></span>
+            <p class="loader-text">booting_portfolio<span class="dots"></span></p>
+            <div class="loader-bar"><span></span></div>
+        </div>
+    </div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <header>
+        <nav class="navbar">
+            <div class="nav-inner">
+                <a href="#hero" class="logo" id="logoHome">MK<span>.</span></a>
 
-        <h1>Kashif's Portfolio</h1>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
 
-        <hr>
-
-        <nav>
-
-            <ul>
-
-                <li><a href="#about">About Me</a></li>
-
-                <li><a href="#skills">Skills</a></li>
-
-                <li><a href="#projects">Projects</a></li>
-
-                <li><a href="#education">Education</a></li>
-
-                <li><a href="#experience">Experience</a></li>
-
-                <li><a href="#certifications">Certifications</a></li>
-
-                <li><a href="#interests">Interests</a></li>
-
-                <li><a href="#contact">Contact</a></li>
-
-            </ul>
-
+                <ul id="navMenu">
+                    <li>
+                        <button class="nav-icon-btn navicon-about" data-target="about" title="About">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.2-3.6 4.2-5.5 7.5-5.5s6.3 1.9 7.5 5.5"/></svg>
+                            <span class="nav-text">About</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-icon-btn navicon-skills" data-target="skills" title="Skills">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+                            <span class="nav-text">Skills</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-icon-btn navicon-projects" data-target="projects" title="Projects">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7a1.5 1.5 0 0 1 1.5-1.5H9l2 2h8A1.5 1.5 0 0 1 20.5 9v9A1.5 1.5 0 0 1 19 19.5H4.5A1.5 1.5 0 0 1 3 18z"/></svg>
+                            <span class="nav-text">Projects</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-icon-btn navicon-architecture" data-target="architecture" title="Architecture">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="6" rx="1.4"/><rect x="3.5" y="14.5" width="7.5" height="6" rx="1.4"/><rect x="13" y="14.5" width="7.5" height="6" rx="1.4"/><path d="M12 9.5v3M8 12.5v2M16 12.5v2"/></svg>
+                            <span class="nav-text">Architecture</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-icon-btn navicon-education" data-target="education" title="Education">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 9.5 12 5l10 4.5-10 4.5L2 9.5z"/><path d="M6 11.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.5"/><path d="M21 9.5v5"/></svg>
+                            <span class="nav-text">Education</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-icon-btn navicon-experience" data-target="experience" title="Experience">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="12" rx="1.8"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M3 12h18"/></svg>
+                            <span class="nav-text">Experience</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-icon-btn navicon-interests" data-target="interests" title="What I Build">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7.5-4.6-9.5-9C1 7.4 3 4 6.6 4c2 0 3.4 1.1 5.4 3.4C14 5.1 15.4 4 17.4 4 21 4 23 7.4 21.5 11c-2 4.4-9.5 9-9.5 9z"/></svg>
+                            <span class="nav-text">Build</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-icon-btn navicon-contact nav-cta" data-target="contact" title="Contact">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6.5 9 6.5 9-6.5"/></svg>
+                            <span class="nav-text">Contact</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </nav>
-
     </header>
 
+    <!-- ================= HERO (always visible / home view) ================= -->
+    <section id="hero">
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-inner">
 
-       <section id="hero">
+            <div id="hero-text">
+                <p class="eyebrow">&gt; <span id="typedEyebrow">whoami</span><span class="cursor-blink">_</span></p>
 
-    <!-- Left Side -->
-    <div id="hero-text">
+                <h1 id="typedName">Muhammad Kashif</h1>
+                <h2>Python Backend Developer · FastAPI &amp; PostgreSQL</h2>
 
-        <h3>Hello, I'm</h3>
+                <p class="description">
+                    I build backend systems and REST APIs with Python, FastAPI and
+                    PostgreSQL — with computer vision as a secondary specialization
+                    using OpenCV and MediaPipe. Use the icons above to explore my work.
+                </p>
 
-        <h1>Muhammad Kashif</h1>
+                <div class="buttons">
+                    <a href="Muhammad_kashif_.pdf" class="btn" download>Download CV</a>
+                    <a href="https://github.com/KasheeCodes" class="btn2" target="_blank" rel="noopener">View GitHub</a>
+                    <button class="btn2" data-target="contact">Contact Me</button>
+                </div>
+            </div>
 
-        <h2>Computer Science Student</h2>
+            <div class="detect-panel" aria-hidden="true">
+                <div class="detect-frame">
+                    <span class="corner tl"></span>
+                    <span class="corner tr"></span>
+                    <span class="corner bl"></span>
+                    <span class="corner br"></span>
 
-        <p>
-            Python Developer | Computer Vision Enthusiast
-        </p>
+                    <div class="detect-label">subject: developer</div>
 
-        <p class="description">
-            Passionate about building real-world software using
-            Python, OpenCV and Computer Vision.
-        </p>
+                    <div class="detect-rows">
+                        <div class="detect-row"><span>Python</span><span class="conf">0.98</span></div>
+                        <div class="detect-row"><span>FastAPI</span><span class="conf">0.93</span></div>
+                        <div class="detect-row"><span>PostgreSQL</span><span class="conf">0.89</span></div>
+                        <div class="detect-row"><span>SQLAlchemy</span><span class="conf">0.86</span></div>
+                        <div class="detect-row"><span>OpenCV</span><span class="conf">0.82</span></div>
+                    </div>
 
-        <div class="buttons">
+                    <div class="detect-footer">frame 001 · lahore, pk</div>
+                </div>
+            </div>
 
-            <a href="Muhammad kashif .pdf" class="btn">Download CV</a>
-
-            <a href="#contact" class="btn2">Contact Me</a>
+            <p class="scroll-hint">tap an icon above to explore &uarr;</p>
 
         </div>
+    </section>
+
+    <!-- ================= PANELS (hidden until their nav icon is clicked) ================= -->
+    <div id="panelStage">
+
+        <!-- ABOUT -->
+        <section id="about" class="panel">
+            <button class="panel-close" data-close>&times;</button>
+            <p class="eyebrow center">// about</p>
+            <h2>About Me</h2>
+
+            <div class="about-card panel-item">
+                <p class="greetings">
+                    Hello! I'm <strong>Muhammad Kashif</strong>, a backend-focused developer and
+                    Computer Science student building APIs, databases and backend systems with Python.
+                </p>
+                <p class="des">
+                    I build structured, maintainable backend systems using FastAPI, SQLAlchemy and
+                    PostgreSQL — covering everything from database design and CRUD operations to
+                    request validation and authentication. Computer vision, with OpenCV and MediaPipe,
+                    is a secondary specialization I use for practical, real-world applications.
+                </p>
+                <p class="goal">
+                    My goal is to become a skilled Backend Developer by building real-world APIs and
+                    continuously deepening my knowledge of databases, backend architecture and deployment.
+                </p>
+
+                <div class="about-sub-grid">
+                    <div class="about-sub">
+                        <h4>What I Build</h4>
+                        <ul>
+                            <li>REST APIs with FastAPI</li>
+                            <li>Relational databases with PostgreSQL</li>
+                            <li>Authentication &amp; request validation</li>
+                            <li>Computer vision tools with OpenCV / MediaPipe</li>
+                        </ul>
+                    </div>
+                    <div class="about-sub">
+                        <h4>Currently Learning</h4>
+                        <ul>
+                            <li>PostgreSQL &amp; database design</li>
+                            <li>Backend architecture patterns</li>
+                            <li>Authentication &amp; deployment</li>
+                            <li>HTTP &amp; web fundamentals</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="panel">
+            <button class="panel-close" data-close>&times;</button>
+            <p class="eyebrow center">// skills</p>
+            <h2>My Skills</h2>
+
+            <div class="skill-group">
+                <p class="skill-group-label">Backend</p>
+                <div class="skills-container">
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>Python</h3><p>Backend Development</p></div>
+                            <div class="skill-back">
+                                <p>Core language for backend APIs &amp; CV scripts.</p>
+                                <div class="level-bar" data-level="92"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>FastAPI</h3><p>REST API Framework</p></div>
+                            <div class="skill-back">
+                                <p>Building structured, validated REST APIs.</p>
+                                <div class="level-bar" data-level="80"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>Pydantic</h3><p>Request Validation</p></div>
+                            <div class="skill-back">
+                                <p>Schema validation and data modeling for APIs.</p>
+                                <div class="level-bar" data-level="75"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>REST APIs</h3><p>Design &amp; Auth</p></div>
+                            <div class="skill-back">
+                                <p>RESTful endpoints, JWT authentication basics.</p>
+                                <div class="level-bar" data-level="78"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <p class="skill-group-label">Database</p>
+                <div class="skills-container">
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>PostgreSQL</h3><p>Relational Database</p></div>
+                            <div class="skill-back">
+                                <p>Schema design, relationships &amp; queries.</p>
+                                <div class="level-bar" data-level="76"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>SQLAlchemy</h3><p>ORM</p></div>
+                            <div class="skill-back">
+                                <p>Models, relationships &amp; CRUD operations.</p>
+                                <div class="level-bar" data-level="74"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>SQL</h3><p>Querying &amp; Design</p></div>
+                            <div class="skill-back">
+                                <p>Writing queries and designing normalized schemas.</p>
+                                <div class="level-bar" data-level="78"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <p class="skill-group-label">Tools</p>
+                <div class="skills-container">
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>Git &amp; GitHub</h3><p>Version Control</p></div>
+                            <div class="skill-back">
+                                <p>Branching, commits &amp; project history.</p>
+                                <div class="level-bar" data-level="82"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>Linux</h3><p>Dev Environment</p></div>
+                            <div class="skill-back">
+                                <p>Comfortable working in a Linux shell environment.</p>
+                                <div class="level-bar" data-level="68"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>Uvicorn</h3><p>ASGI Server</p></div>
+                            <div class="skill-back">
+                                <p>Running &amp; serving FastAPI applications.</p>
+                                <div class="level-bar" data-level="70"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <p class="skill-group-label">Additional</p>
+                <div class="skills-container">
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>C++</h3><p>OOP, DSA &amp; Problem Solving</p></div>
+                            <div class="skill-back">
+                                <p>Used for OOP-based console applications.</p>
+                                <div class="level-bar" data-level="80"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>OpenCV</h3><p>Image &amp; Video Processing</p></div>
+                            <div class="skill-back">
+                                <p>Frame processing for vision-based tools.</p>
+                                <div class="level-bar" data-level="75"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>MediaPipe</h3><p>Pose &amp; Hand Detection</p></div>
+                            <div class="skill-back">
+                                <p>Pose landmarks for the cricket trainer project.</p>
+                                <div class="level-bar" data-level="70"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card panel-item">
+                        <div class="skill-inner">
+                            <div class="skill-front"><h3>HTML &amp; CSS</h3><p>Responsive Web Design</p></div>
+                            <div class="skill-back">
+                                <p>Building clean, responsive interfaces.</p>
+                                <div class="level-bar" data-level="85"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="panel">
+            <button class="panel-close" data-close>&times;</button>
+            <p class="eyebrow center">// projects</p>
+            <h2>My Projects</h2>
+
+            <div class="projects-container">
+                <div class="project-card panel-item">
+                    <h3>Rule-Based Cricket Training System</h3>
+                    <h4>Python · OpenCV · MediaPipe</h4>
+                    <p>A computer-vision system that analyzes batting and bowling technique using MediaPipe pose detection and predefined coaching rules.</p>
+                    <ul class="project-features">
+                        <li>Pose landmark detection</li>
+                        <li>Rule-based technique scoring</li>
+                        <li>Real-time video frame processing</li>
+                    </ul>
+                    <div class="project-links">
+                        <span class="btn-code btn-disabled" title="Link coming soon">
+                            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                            View Code — Coming Soon
+                        </span>
+                    </div>
+                </div>
+
+                <div class="project-card panel-item">
+                    <h3>Forensic Face Recognition System</h3>
+                    <h4>FastAPI · Python · Database · Face Recognition</h4>
+                    <p>An admin dashboard and FastAPI backend for scanning, registering and matching faces, with handling for unknown-match cases.</p>
+                    <ul class="project-features">
+                        <li>FastAPI backend endpoints</li>
+                        <li>Face registration &amp; matching logic</li>
+                        <li>Database-backed record storage</li>
+                        <li>Unknown-match handling</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/KasheeCodes/face-recognition-information-system" class="btn-code" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                            View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card panel-item">
+                    <h3>Student Management API</h3>
+                    <h4>FastAPI · SQLAlchemy · PostgreSQL · REST API</h4>
+                    <p>A backend API application for managing students, courses and academic records with validated, RESTful endpoints.</p>
+                    <ul class="project-features">
+                        <li>Student CRUD operations</li>
+                        <li>Database relationships</li>
+                        <li>Request validation</li>
+                        <li>Query filtering</li>
+                        <li>RESTful endpoints</li>
+                        <li>PostgreSQL integration</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/KasheeCodes/student-management-api" class="btn-code" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                            View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card panel-item">
+                    <h3>Hotel Management System</h3>
+                    <h4>C++</h4>
+                    <p>Console-based application for hotel room booking, customer management and billing.</p>
+                    <div class="project-links">
+                        <span class="btn-code btn-disabled" title="Link coming soon">
+                            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                            View Code — Coming Soon
+                        </span>
+                    </div>
+                </div>
+
+                <div class="project-card panel-item">
+                    <h3>Portfolio Website</h3>
+                    <h4>HTML · CSS</h4>
+                    <p>This personal portfolio site — built from scratch to showcase my skills, projects and experience.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/KasheeCodes/portfolio" class="btn-code" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                            View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BACKEND ARCHITECTURE -->
+        <section id="architecture" class="panel">
+            <button class="panel-close" data-close>&times;</button>
+            <p class="eyebrow center">// architecture</p>
+            <h2>Backend Architecture</h2>
+
+            <div class="arch-card panel-item">
+                <div class="arch-flow">
+                    <div class="arch-step"><span>Client</span></div>
+                    <div class="arch-arrow">&darr;</div>
+                    <div class="arch-step"><span>REST API</span></div>
+                    <div class="arch-arrow">&darr;</div>
+                    <div class="arch-step arch-step-accent"><span>FastAPI</span></div>
+                    <div class="arch-arrow">&darr;</div>
+                    <div class="arch-step"><span>Service Layer</span></div>
+                    <div class="arch-arrow">&darr;</div>
+                    <div class="arch-step"><span>SQLAlchemy</span></div>
+                    <div class="arch-arrow">&darr;</div>
+                    <div class="arch-step arch-step-accent2"><span>PostgreSQL</span></div>
+                </div>
+
+                <div class="arch-pipeline">
+                    <span>Authentication</span>
+                    <span class="arch-pipe-arrow">&rarr;</span>
+                    <span>Validation</span>
+                    <span class="arch-pipe-arrow">&rarr;</span>
+                    <span>Business Logic</span>
+                    <span class="arch-pipe-arrow">&rarr;</span>
+                    <span>Database</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" class="panel">
+            <button class="panel-close" data-close>&times;</button>
+            <p class="eyebrow center">// education</p>
+            <h2>Education</h2>
+
+            <div class="edu-exp-list">
+                <div class="education-card panel-item">
+                    <h3>BS Computer Science</h3>
+                    <h4>University of Lahore</h4>
+                    <p>2023 — Present · 6th Semester Completed</p>
+                    <p class="edu-cgpa">CGPA: 3.44 / 4.00</p>
+                </div>
+                <div class="education-card panel-item">
+                    <h3>Inter in Computer Science</h3>
+                    <h4>Akhuwat College Kasur</h4>
+                    <p>2021 — 2023</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="panel">
+            <button class="panel-close" data-close>&times;</button>
+            <p class="eyebrow center">// experience</p>
+            <h2>Development Experience</h2>
+
+            <div class="edu-exp-list">
+                <div class="experience-card panel-item">
+                    <h3>Backend Development</h3>
+                    <h4>Python · FastAPI</h4>
+                    <p>Building REST APIs, request validation and CRUD systems, including the Student Management API and Forensic Face Recognition backend.</p>
+                </div>
+                <div class="experience-card panel-item">
+                    <h3>Database Development</h3>
+                    <h4>PostgreSQL · SQLAlchemy</h4>
+                    <p>Designing relational schemas, modeling relationships and integrating databases into backend applications.</p>
+                </div>
+                <div class="experience-card panel-item">
+                    <h3>Computer Vision</h3>
+                    <h4>OpenCV · MediaPipe</h4>
+                    <p>Building practical computer-vision applications, including pose-detection-based coaching tools.</p>
+                </div>
+                <div class="experience-card panel-item">
+                    <h3>Academic Software Projects</h3>
+                    <h4>University of Lahore</h4>
+                    <p>Developed this Portfolio Website, a Hotel Management System and other programming projects using C++, Python, HTML and CSS.</p>
+                </div>
+                <div class="experience-card panel-item">
+                    <h3>Git / GitHub</h3>
+                    <h4>Version Control</h4>
+                    <p>Maintaining project history and public repositories for all major projects.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT I BUILD -->
+        <section id="interests" class="panel">
+            <button class="panel-close" data-close>&times;</button>
+            <p class="eyebrow center">// what-i-build</p>
+            <h2>What I Build</h2>
+
+            <div class="interest-container">
+                <div class="interest-box panel-item"><h3>REST APIs</h3><p>Building structured and maintainable APIs with FastAPI.</p></div>
+                <div class="interest-box panel-item"><h3>Database Systems</h3><p>Designing relational databases with PostgreSQL and SQLAlchemy.</p></div>
+                <div class="interest-box panel-item"><h3>Backend Systems</h3><p>Developing CRUD systems, authentication, validation and business logic.</p></div>
+                <div class="interest-box panel-item"><h3>Computer Vision</h3><p>Building practical CV applications using OpenCV and MediaPipe.</p></div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="panel">
+            <button class="panel-close" data-close>&times;</button>
+            <p class="eyebrow center">// contact</p>
+            <h2>Contact Me</h2>
+
+            <div class="contact-card panel-item">
+                <a class="contact-item" href="https://github.com/KasheeCodes" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 1.5C6.2 1.5 1.5 6.2 1.5 12c0 4.6 3 8.6 7.2 10 .5.1.7-.2.7-.5v-1.9c-2.9.6-3.6-1.2-3.6-1.2-.5-1.2-1.2-1.6-1.2-1.6-1-.6.1-.6.1-.6 1.1.1 1.7 1.1 1.7 1.1 1 1.6 2.5 1.2 3.1.9.1-.7.4-1.2.7-1.5-2.3-.3-4.7-1.1-4.7-5 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.7 0 0 .9-.3 2.8 1a9.6 9.6 0 0 1 5.1 0c1.9-1.3 2.8-1 2.8-1 .6 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.7 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5 4.2-1.4 7.2-5.4 7.2-10 0-5.8-4.7-10.5-10.5-10.5z"/></svg>
+                    <div><h4>GitHub</h4><p>github.com/KasheeCodes</p></div>
+                </a>
+                <a class="contact-item" href="https://linkedin.com/in/muhammad-kashif" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97V21H9z"/></svg>
+                    <div><h4>LinkedIn</h4><p>linkedin.com/in/muhammad-kashif</p></div>
+                </a>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6H4zm16 2.24-7.42 5.57a1 1 0 0 1-1.16 0L4 8.24V18h16V8.24z"/></svg>
+                    <div><h4>Email</h4><p>70149854@student.uol.edu.pk</p></div>
+                </div>
+            </div>
+        </section>
 
     </div>
 
-    <!-- Right Side -->
-    <div class="profile-image">
+    <footer>
+        <p>&copy; 2026 Muhammad Kashif. All rights reserved.</p>
+    </footer>
 
-        <img src="k7.jpg" alt="Muhammad Kashif">
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">&uarr;</button>
 
-    </div>
-
-       </section>
-
-<section id="about">
-
-    <h2>About Me</h2>
-
-    <div class="about-card">
-
-        <p class="greetings">
-            Hello! I'm <strong>Muhammad Kashif</strong>, a Computer Science student passionate about software development and modern technologies.
-        </p>
-
-        <p class="des">
-            I enjoy building practical applications using Python and continuously improving my programming skills. Currently, I'm learning Computer Vision with OpenCV and MediaPipe while also developing responsive web interfaces using HTML and CSS.
-        </p>
-
-        <p class="goal">
-            My goal is to become a skilled Python Developer and Computer Vision Engineer by building real-world projects and continuously learning new technologies.
-        </p>
-
-    </div>
-
-</section>
-
-<section id="skills">
-
-    <h2>My Skills</h2>
-
-    <div class="skills-container">
-
-        <div class="skill-card">
-            <h3>Python</h3>
-            <p>Backend Development</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>C++</h3>
-            <p>OOP, DSA & Problem Solving</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>HTML & CSS</h3>
-            <p>Responsive Web Design</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>OpenCV</h3>
-            <p>Image & Video Processing</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>MediaPipe</h3>
-            <p>Pose & Hand Detection</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>Git</h3>
-            <p>Version Control</p>
-        </div>
-
-    </div>
-
-</section>
-
-<section id="projects">
-
-    <h2>My Projects</h2>
-
-    <div class="projects-container">
-
-        <div class="project-card">
-
-            <h3>Rule-Based Cricket Training System</h3>
-
-            <h4>Python | OpenCV | MediaPipe</h4>
-
-            <p>
-                A Computer Vision based system that analyzes
-                batting and bowling techniques using MediaPipe
-                pose detection and predefined coaching rules.
-            </p>
-
-        </div>
-
-        <div class="project-card">
-
-            <h3>Hotel Management System</h3>
-
-            <h4>C++</h4>
-
-            <p>
-                Console based application for hotel room
-                booking, customer management and billing.
-            </p>
-
-        </div>
-
-        <div class="project-card">
-
-            <h3>Student Learning Management System</h3>
-
-            <h4>Python | HTML | CSS</h4>
-
-            <p>
-                A web-based application for managing students,
-                courses and academic records.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <section class="edu-exp">
-
-    <!-- Education -->
-    <div id="education">
-        <h2>Education</h2>
-
-        <div class="education-card">
-            <h3>BS Computer Science</h3>
-            <h4>University of Lahore</h4>
-            <p>2023 - Present</p>
-        </div>
-    </div>
-
-    <!-- Experience -->
-    <div id="experience">
-        <h2>Experience</h2>
-
-        <div class="experience-card">
-            <h3>Academic Projects</h3>
-            <h4>University Projects</h4>
-            <p>
-                Developed multiple academic projects including Portfolio Website,
-                Student Management System, Hotel Management System and other
-                programming projects using C++, Python, HTML and CSS.
-            </p>
-        </div>
-    </div>
-
-    <section id="interests">
-
-    <h2>My Interests</h2>
-
-    <div class="interest-container">
-
-        <div class="interest-box">
-            <h3>💻 Backend Development</h3>
-            <p>Building secure, scalable, and efficient web applications using Python and FastAPI.</p>
-        </div>
-
-        <div class="interest-box">
-            <h3>🤖 Computer Vision</h3>
-            <p>Exploring OpenCV and MediaPipe to develop intelligent real-world applications.</p>
-        </div>
-
-        <div class="interest-box">
-            <h3>🏏 Cricket Analytics</h3>
-            <p>Passionate about using technology to improve cricket training and player performance.</p>
-        </div>
-
-        <div class="interest-box">
-            <h3>🎮 Gaming</h3>
-            <p>Enjoy strategic and competitive games while exploring game technologies.</p>
-        </div>
-
-        <div class="interest-box">
-            <h3>📚 Continuous Learning</h3>
-            <p>Always improving programming skills through projects, online courses, and hands-on practice.</p>
-        </div>
-
-    </div>
-
-</section>
-
-</section>
-<section id="contact">
-
-    <h2>Contact Me</h2>
-
-    <div class="contact-card">
-
-        <h4>📞 Phone</h4>
-        <p>+92 309 9016421</p>
-
-        <h4>📧 Email</h4>
-        <p>70149854@student.uol.edu.pk</p>
-
-        <h4>📍 Address</h4>
-        <p>Lahore, Pakistan</p>
-
-    </div>
-
-</section>
+    <script src="script.js" defer></script>
 
 </body>
 </html>
