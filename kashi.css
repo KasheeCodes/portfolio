@@ -423,7 +423,12 @@ img{ max-width:100%; display:block; }
     font-size:52px;
     line-height:1.1;
     margin-bottom:10px;
-    color:var(--text);
+    background:linear-gradient(100deg, var(--text) 20%, var(--accent) 45%, var(--text) 70%);
+    background-size:250% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:shimmerText 6s linear infinite;
 }
 
 #hero-text h2{
@@ -432,6 +437,12 @@ img{ max-width:100%; display:block; }
     font-family:var(--font-body);
     color:var(--accent-2);
     margin-bottom:22px;
+    opacity:0;
+    transform:translateY(14px);
+}
+
+body.loaded #hero-text h2{
+    animation:fadeSlideUp .7s cubic-bezier(.2,.7,.2,1) .05s forwards;
 }
 
 #hero-text .description{
@@ -439,6 +450,12 @@ img{ max-width:100%; display:block; }
     color:var(--text-muted);
     margin-bottom:34px;
     max-width:480px;
+    opacity:0;
+    transform:translateY(14px);
+}
+
+body.loaded #hero-text .description{
+    animation:fadeSlideUp .7s cubic-bezier(.2,.7,.2,1) .2s forwards;
 }
 
 .scroll-hint{
@@ -448,7 +465,22 @@ img{ max-width:100%; display:block; }
     color:var(--text-faint);
 }
 
-.buttons{ display:flex; gap:16px; flex-wrap:wrap; }
+.buttons{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    opacity:0;
+    transform:translateY(14px);
+}
+
+body.loaded .buttons{
+    animation:fadeSlideUp .7s cubic-bezier(.2,.7,.2,1) .35s forwards;
+}
+
+@keyframes fadeSlideUp{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+}
 
 .btn, .btn2{
     text-decoration:none;
@@ -540,7 +572,61 @@ img{ max-width:100%; display:block; }
     font-size:36px;
     text-align:center;
     margin-bottom:44px;
-    color:var(--text);
+    position:relative;
+    display:block;
+    background:linear-gradient(90deg, var(--text) 0%, var(--accent) 45%, var(--accent-2) 55%, var(--text) 100%);
+    background-size:250% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    opacity:0;
+    transform:translateY(-14px);
+    animation: shimmerText 5s linear infinite;
+    animation-play-state:paused;
+}
+
+.panel.active > h2{
+    animation:
+        headingIn .6s cubic-bezier(.2,.7,.2,1) .1s forwards,
+        shimmerText 5s linear 1s infinite;
+}
+
+.panel > h2::after{
+    content:"";
+    display:block;
+    width:0;
+    height:3px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    margin:16px auto 0;
+    border-radius:2px;
+}
+
+.panel.active > h2::after{
+    animation:underlineDraw .6s cubic-bezier(.2,.7,.2,1) .45s forwards;
+}
+
+.panel > .eyebrow.center{
+    opacity:0;
+    transform:translateY(-10px);
+}
+
+.panel.active > .eyebrow.center{
+    animation:headingIn .5s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+@keyframes headingIn{
+    from{ opacity:0; transform:translateY(-14px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes shimmerText{
+    0%{ background-position:200% center; }
+    100%{ background-position:-50% center; }
+}
+
+@keyframes underlineDraw{
+    from{ width:0; }
+    to{ width:64px; }
 }
 
 /* ==========================================================
@@ -624,6 +710,18 @@ img{ max-width:100%; display:block; }
     margin-bottom:16px;
     padding-bottom:8px;
     border-bottom:1px dashed var(--border);
+    opacity:0;
+    transform:translateX(-14px);
+}
+
+.panel.active .skill-group:nth-child(1) .skill-group-label{ animation:labelIn .5s cubic-bezier(.2,.7,.2,1) .05s forwards; }
+.panel.active .skill-group:nth-child(2) .skill-group-label{ animation:labelIn .5s cubic-bezier(.2,.7,.2,1) .15s forwards; }
+.panel.active .skill-group:nth-child(3) .skill-group-label{ animation:labelIn .5s cubic-bezier(.2,.7,.2,1) .25s forwards; }
+.panel.active .skill-group:nth-child(4) .skill-group-label{ animation:labelIn .5s cubic-bezier(.2,.7,.2,1) .35s forwards; }
+
+@keyframes labelIn{
+    from{ opacity:0; transform:translateX(-14px); }
+    to{ opacity:1; transform:translateX(0); }
 }
 
 .skills-container{
@@ -682,8 +780,17 @@ img{ max-width:100%; display:block; }
 
 .skill-front h3{
     font-size:20px;
-    color:var(--text);
     margin-bottom:8px;
+    background:linear-gradient(90deg, var(--text) 0%, var(--accent) 50%, var(--text) 100%);
+    background-size:250% auto;
+    background-position:200% center;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    transition:background-position .6s ease;
+}
+.skill-card:hover .skill-front h3{
+    background-position:-50% center;
 }
 .skill-front p{
     color:var(--text-muted);
@@ -738,8 +845,17 @@ img{ max-width:100%; display:block; }
 
 .project-card h3{
     font-size:19px;
-    color:var(--text);
     margin-bottom:8px;
+    background:linear-gradient(90deg, var(--text) 0%, var(--accent) 50%, var(--text) 100%);
+    background-size:250% auto;
+    background-position:200% center;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    transition:background-position .6s ease;
+}
+.project-card:hover h3{
+    background-position:-50% center;
 }
 
 .project-card h4{
@@ -895,8 +1011,17 @@ a.btn-code:hover{
 
 .education-card h3, .experience-card h3{
     font-size:18px;
-    color:var(--text);
     margin-bottom:6px;
+    background:linear-gradient(90deg, var(--text) 0%, var(--accent) 50%, var(--text) 100%);
+    background-size:250% auto;
+    background-position:200% center;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    transition:background-position .6s ease;
+}
+.education-card:hover h3, .experience-card:hover h3{
+    background-position:-50% center;
 }
 .education-card h4, .experience-card h4{
     font-family:var(--font-mono);
@@ -940,8 +1065,17 @@ a.btn-code:hover{
 
 .interest-box h3{
     font-size:17px;
-    color:var(--text);
     margin-bottom:10px;
+    background:linear-gradient(90deg, var(--text) 0%, var(--accent-2) 50%, var(--text) 100%);
+    background-size:250% auto;
+    background-position:200% center;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    transition:background-position .6s ease;
+}
+.interest-box:hover h3{
+    background-position:-50% center;
 }
 .interest-box p{
     font-size:14px;
